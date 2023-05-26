@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -33,6 +34,7 @@ import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.compo
     ButtonModule,
     CalendarModule,
     DropdownModule,
+    InputNumberModule,
     InputTextModule,
     InputTextareaModule,
     SelectButtonModule,
