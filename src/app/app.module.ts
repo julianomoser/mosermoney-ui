@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MessageService } from 'primeng/api';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
@@ -22,9 +24,11 @@ import { PessoasModule } from './pessoas/pessoas.module';
     LancamentosModule,
     PessoasModule,
 
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
+      ConfirmationService,
       MessageService
   ],
   bootstrap: [AppComponent]
