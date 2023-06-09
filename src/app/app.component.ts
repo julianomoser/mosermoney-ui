@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -12,12 +11,19 @@ export class AppComponent implements OnInit {
 
   constructor(
     private config: PrimeNGConfig,
-    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
-    this.translateService.setDefaultLang('pt');
-    this.translateService.get('primeng')
-      .subscribe(res => this.config.setTranslation(res));
+      this.config.setTranslation({
+        accept: 'Accept',
+        reject: 'Cancel',
+        "dayNames": ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+        "dayNamesShort": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+        "dayNamesMin": ["Do","Se","Te","Qa","Qi","Sx","Sa"],
+        "monthNames": ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+        "monthNamesShort": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun","Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+        "today": "Hoje",
+        "weekHeader": "Sem"
+    });
   }
 }
