@@ -59,8 +59,32 @@ export class PessoaPesquisaComponent  {
           this.tabela.reset();
         }
 
-        this.messageService.add({ severity: 'success', detail: 'Pessoa excluída com sucesso!' })
+        this.message('success', 'Pessoa excluída com sucesso!');
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  alternarStatus(pessoa: any): void {
+    const novoStatus = !pessoa.ativo;
+    console.log('Status',novoStatus)
+    if(novoStatus) {
+      this.pessoaService.ativar(pessoa.codigo)
+      .then(() => {
+        pessoa.ativo = novoStatus;
+        this.message('success', 'Pessoa ativada com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+    } else {
+      this.pessoaService.inativar(pessoa.codigo)
+      .then(() => {
+        pessoa.ativo = novoStatus;
+        this.message('success', 'Pessoa inativa com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+    }
+  }
+
+  private message(typeMessage: string, message: string): void {
+    this.messageService.add({ severity: typeMessage, detail: message });
   }
 }

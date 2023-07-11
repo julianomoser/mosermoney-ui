@@ -32,24 +32,25 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td>
-              <span class="p-column-title">Pessoa</span>
+              <span class="p-column-title">Nome</span>
               {{ pessoa.nome }}
             </td>
 
             <td>
-              <span class="p-column-title">Descrição</span>
-              {{ pessoa.cidade }}
+              <span class="p-column-title">Cidade</span>
+              {{ pessoa.endereco.cidade }}
             </td>
 
-            <td class="col-data">
-              <span class="p-column-title">Vencimento</span>
-              {{ pessoa.estado }}
+            <td>
+              <span class="p-column-title">Estado</span>
+              {{ pessoa.endereco.estado }}
             </td>
 
-            <td class="col-data">
-              <span class="p-column-title">Status</span>
-              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
-                                     [style.color]="pessoa.ativo ? 'blue' : 'red'">
+            <td>
+              <span class="p-column-title" style="text-align: center">Status</span>
+              <a style="text-align: center" href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
+                                     [style.color]="pessoa.ativo ? '#5cb85c' : '#d9534f'"
+                                     (click)="alternarStatus(pessoa)">
                 {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
               </a>
             </td>

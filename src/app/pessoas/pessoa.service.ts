@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import * as console from 'console';
 
 export class PessoaFiltro {
   nome?: string;
@@ -65,5 +66,21 @@ export class PessoaService {
     return firstValueFrom(
       this.http.delete<void>(`${this.pessoasUrl}/${codigo}`, { headers })
     );
+  }
+
+  ativar(codigo: number): Promise<void> {
+    const headers = new HttpHeaders()
+    .append('Authorization', this.basicAuth);
+
+    return firstValueFrom (
+      this.http.put<void>(`${this.pessoasUrl}/${codigo}/ativo`, null,{ headers }));
+  }
+
+  inativar(codigo: number): Promise<void> {
+    const headers = new HttpHeaders()
+    .append('Authorization', this.basicAuth);
+
+    return firstValueFrom (
+      this.http.delete<void>(`${this.pessoasUrl}/${codigo}/ativo`, { headers }));
   }
 }
